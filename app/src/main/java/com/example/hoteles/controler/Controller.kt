@@ -35,9 +35,10 @@ class Controller (val context : Context) {
         val  myActivity = context as MainActivity
 
         adapterHotel = AdapterHotel(){
-            listHotels,{
-
-        }
+            listHotels,
+            {
+                pos -> delHotel(pos)
+            }
         }
     }
 
