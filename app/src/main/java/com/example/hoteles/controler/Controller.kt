@@ -38,8 +38,12 @@ class Controller (val context : Context) {
             listHotels,
             {
                 pos -> delHotel(pos)
+            },
+            {
+                pos -> updateHotel(pos)
             }
         }
+        myActivity.binding.myRecyclerView.adapter = adapterHotel
     }
 
     private fun initOnClickListener(){
