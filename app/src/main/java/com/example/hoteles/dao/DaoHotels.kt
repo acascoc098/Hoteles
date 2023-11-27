@@ -6,10 +6,14 @@ import com.example.hoteles.objects_models.Repository
 
 class DaoHotels private constructor(): InterfaceDao {
     companion object {
+        /*
+        * Con by lazy hacemos que si no hay ninguna referencia en el documento,
+        * con la primera se crea el objeto
+        * */
         val myDao: DaoHotels by lazy{ //lazy delega a un primer acceso
             DaoHotels() //Me creo sólo este objeto una vez.
         }
     }
-    //Método que accede a la BBDD y devuelve todos los datos
-    override fun getDataHotel(): List<Hotel> = Repository.listHotels
+    //Método que accede a la BBDD (repository) y devuelve todos los datos
+    override fun getDataHotels(): List<Hotel> = Repository.listHotels
 }
