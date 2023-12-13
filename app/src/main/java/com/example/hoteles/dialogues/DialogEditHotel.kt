@@ -61,7 +61,7 @@ class DialogEditHotel (
     }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog? {
         return activity?.let {
-            val builder = AlertDialog.Builder(activity)
+            val builder = AlertDialog.Builder(it)
             //Get the layout inflater
             val inflater = requireActivity().layoutInflater;
             val viewDialogEditHotel = inflater.inflate(R.layout.dialog_new_hotel, null)
