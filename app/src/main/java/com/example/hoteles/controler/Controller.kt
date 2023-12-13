@@ -19,38 +19,38 @@ class Controller (val context : Context) {
     }
     fun initData(){
         // listHotels = DaoHotels2.myDao.toMutableList()
-        setScrollWithOffsetLinearLayout()
         listHotels = DaoHotels.myDao.getDataHotels().toMutableList() //llamamos al singleton.
-        initOnClickListener()
     }
-
     fun loggOut() {
-        Toast.makeText( context, "He mostrado los datos en pantalla", Toast. LENGTH_LONG).show()
+        Toast.makeText(context,"He mostrado los datos en pantalla", Toast.LENGTH_LONG).show()
         listHotels.forEach{
-            println (it)
+            println(it)
         }
     }
+    fun setAdapter() { // Cargamos nuestro AdapterHotgel al adapter del RecyclerView
+        val myActivity = context as MainActivity
+        myActivity.binding.myRecyclerView.adapter = AdapterHotel( listHotels,
+            { pos-> delHotel(pos) },
+            { pos-> updateHotel(pos)  } )
+    }
 
-    fun setAdapter(){
-        val  myActivity = context as MainActivity
+    fun delHotel(pos : Int){
+        //Aquí habrá que crear un diáglogo para borrar el hotel
+        Toast.makeText( context, "Borraremos el hotel de posición $pos",
+            Toast.LENGTH_LONG).show()
+        listHotels.removeAt(pos)
+        val myActivity = context as MainActivity
 
-        adapterHotel = AdapterHotel(){
-            listHotels,
-            {
-                pos -> delHotel(pos)
-            },
-            {
-                pos -> updateHotel(pos)
-            }
+        val dialog = DialogDeleteHotel(
+            pos,
+            listHotels.get(pos).name
+        ){
+            position -> okOnDeleteHotel(position)
         }
-        myActivity.binding.myRecyclerView.adapter = adapterHotel
-    }
 
-    private fun initOnClickListener(){
-        val my
+        myActivity.binding.myRecyclerView.adapter?.notifyItemRemoved(pos) //Notificamos sólo a esa posición
     }
-
-    private fun setScrollWithOffsetLinearLayout() {
+    fun updateHotel(pos: Int){
 
     }
 }

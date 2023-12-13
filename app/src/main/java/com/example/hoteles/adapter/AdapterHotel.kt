@@ -20,7 +20,7 @@ class AdapterHotel( var listHotel : MutableList<Hotel>) : RecyclerView.Adapter<V
     Accedemos al objeto por medio de position
     */
     override fun onBindViewHolder(holder: ViewHHotel, position: Int) {
-        holder.renderize(listHotel.get(position)) //renderizamos la view.
+        holder.renderize(listHotel.get(position), position) //renderizamos la view.
     }
     /*
     Este método, devuelve el número de objetos a representar en el recyclerView.
