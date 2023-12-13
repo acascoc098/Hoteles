@@ -16,7 +16,6 @@ import com.example.hoteles.models.Hotel
 class Controller (val context : Context) {
     lateinit var listHotels : MutableList<Hotel> //lista de objetos
     lateinit var adapterHotel : AdapterHotel
-    //val binding : ActivityMainBinding
 
     private lateinit var layoutManager : LinearLayoutManager
     init {
@@ -24,21 +23,21 @@ class Controller (val context : Context) {
     }
     fun initData(){
         // listHotels = DaoHotels2.myDao.toMutableList()
-        setScrollWithOffsetLinearLayout()
+        //setScrollWithOffsetLinearLayout()
         listHotels = DaoHotels.myDao.getDataHotels().toMutableList() //llamamos al singleton.
         setAdapter()
-        initOnClickListener()
+        //initOnClickListener()
     }
 
-    private fun setScrollWithOffsetLinearLayout() {
+    /*private fun setScrollWithOffsetLinearLayout() {
         layoutManager = context.binding.myRecyclerView.layoutManager as LinearLayoutManager
     }
 
     private fun initOnClickListener() {
-        context.btn_Add.setOnClickListener{
+        context.binding.btn_Add.setOnClickListener{
             addhotel()
         }
-    }
+    }*/
 
     private fun addhotel() {
         Toast.makeText(context,"Añadiremos un nuevo hotel", Toast.LENGTH_LONG).show()
@@ -100,7 +99,7 @@ class Controller (val context : Context) {
         val editDialog = DialogEditHotel(listHotels.get(pos)){
             editHotel -> okOnEditHotel(editHotel,pos)
         }
-        val myActivity
+        //val myActivity
     }
 
     private fun okOnEditHotel(editHotel: Hotel, pos: Int) {
