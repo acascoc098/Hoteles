@@ -13,7 +13,7 @@ class DialogDeleteHotel(
 ) : DialogFragment(){
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(it)
+        val builder = AlertDialog.Builder(context)
         builder.setMessage( "¿Deseas borrar el alojamiento $name?").setPositiveButton(
             "Si", DialogInterface.OnClickListener { dialog, id ->
                 // Send the positive button event back to the host activity
